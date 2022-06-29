@@ -69,6 +69,7 @@ class Test {
 
 		gp1.addPersona(p1);
 		gp1.addPersona(p2);
+
 		
 		assertEquals(1,gp1.cantidadPersonas());
 		
@@ -83,27 +84,17 @@ class Test {
 		
 		Persona p1= new Persona("Esteban","VillaManaos","1277455");
 		Persona p2= new Persona("Jacinto","Villalobos","1277455");
-
+		Persona p3= new Persona("Jon","Snow","4845512");
 		gp1.addPersona(p1);
 		gp1.addPersona(p2);
-		
-		Predicate<Persona> p = new Predicate<Persona>() {
-			@Override
-			public boolean test(Persona p) {
-				return p.getApellido().matches("Villa") ;
-				
-			}	
-		};	
-		
-		
-		
-		personasFiltradas = gestor.buscarPersona(p);
-		assertEquals(2,personasFiltradas.size());
-		ArrayList<Persona> aux = gestor.buscarPersona(s -> s.getApellido().contains("Villa"));
-		
+		gp1.addPersona(p3);
 
-		
-		
+		ArrayList<Persona> aux = gp1.buscarPersona("Villa");
+
+		assertEquals(2, aux.size());
+		assertEquals(p1, aux.get(0));
+		assertEquals(p2, aux.get(1));
+
 	}
 	
 	

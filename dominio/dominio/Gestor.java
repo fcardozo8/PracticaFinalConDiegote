@@ -57,9 +57,19 @@ public class Gestor {
 //
 //    }
 	
-	public ArrayList<Persona> buscarPersona(Predicate<Persona> p) {
-		return misPersonas.stream().filter(p).collect(Collectors.toCollection(ArrayList<Persona>::new));
-		
+	public ArrayList<Persona> buscarPersona(String parteApellido) {
+//		return misPersonas.stream().filter(p).collect(Collectors.toCollection(ArrayList<Persona>::new));
+		//		library.stream()
+//				.map(book -> book.getAuthor())
+//				.filter(author -> author.getAge() >= 50)
+//				.distinct()
+//				.limit(15)
+//				.map(Author::getSurname)
+//				.map(String::toUpperCase)
+//				.collect(toList());
+		return (ArrayList<Persona>) misPersonas.stream()
+				.filter(p -> p.getApellido().contains(parteApellido))
+				.collect(Collectors.toList());
 	}
 
 }
